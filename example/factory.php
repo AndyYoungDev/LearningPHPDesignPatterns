@@ -7,10 +7,13 @@
 
 //简单工厂模式（静态工厂模式）
 //
-interface animal{
+interface animal
+{
     public function say();
 }
-class cat implements animal{
+
+class cat implements animal
+{
 
     public function say()
     {
@@ -18,24 +21,30 @@ class cat implements animal{
         // TODO: Implement say() method.
     }
 }
-class dog implements animal{
+
+class dog implements animal
+{
     public function say()
     {
         echo "汪";
         // TODO: Implement say() method.
     }
 }
-class factory{
+
+class factory
+{
     static function createCat()
     {
         return new cat();
     }
+
     static function createDog()
     {
         return new dog();
     }
 }
-$cat=factory::createCat();
+
+$cat = factory::createCat();
 $cat->say();
-$dog=factory::createDog();
+$dog = factory::createDog();
 $dog->say();
