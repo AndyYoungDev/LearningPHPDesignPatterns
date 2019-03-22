@@ -38,3 +38,13 @@ class test
 Register::set('test',new test());
 $obj=Register::get('test');
 var_dump($obj->test());
+
+
+//高级用法
+
+/*
+ * 通过工厂模式创建单例对象
+ * 将对方挂到注册树上
+ *
+ */
+
