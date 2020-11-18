@@ -2,7 +2,7 @@
 
 /**
  * Created by PhpStorm.
- * User: JackYang500
+ * User: AndyYoungDev
  * Date: 3/22/2019
  * Time: 2:05 PM
  */
@@ -31,6 +31,9 @@ class Sms implements Mail
     }
 }
 
+$sms=new Sms();
+$email=new Email();
+
 class Register
 {
     private $mail;
@@ -46,7 +49,35 @@ class Register
     }
 }
 
-$sms=new Sms();
-$email=new Email();
+
 $register=new Register($email);
+$register=new Register($sms);
 $register->register();
+
+class Register2
+{
+    private $mail;
+
+    public function setMail(Mail $mail)
+    {
+        //通过构造函数注入
+        $this->mail=$mail;
+    }
+    public function register()
+    {
+        $this->mail->send();
+    }
+}
+
+
+//1.构造函数
+$register=new Register($email);
+//2.setter
+$register=new Register2();
+$register->setMail($sms);
+
+
+
+
+$register->register();
+
